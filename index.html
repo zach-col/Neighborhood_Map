@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
   </head>
   <body>
+    <!-- Knockout.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+    <!-- navbar info -->
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">sample</a>
+  </div>
+   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
     <div class="container">
       <div class="options-box">
         <h1>Find Your New NYC Home</h1>
         <div>
-          <input id="show-listings" type="button" value="Show Listings">
+          <input id="show-listings" type="button" value="Show Listings" data-bind="click: showListings">
           <input id="hide-listings" type="button" value="Hide Listings">
         </div>
       </div>
@@ -222,9 +232,17 @@
       }
 
     </script>
+    <script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
 
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
   <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=remove_api_for_github_&v=3&callback=initMap">
+      src="https://maps.googleapis.com/maps/api/js?key=remove_for_github&v=3&callback=initMap">
   </script>
 
   </body>
