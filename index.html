@@ -14,6 +14,11 @@
         <div>
           <input id="show-listings" type="button" value="Show Listings" data-bind="click: showListings">
           <input id="hide-listings" type="button" value="Hide Listings">
+
+      <td><input data-bind='value: searchField, valueUpdate: "afterkeydown"' /></td>
+      <h1 data-bind="text: searchField"></h1>
+
+
           <ul data-bind="foreach: myLocations">
             <li data-bind="text: title"></li>
           </ul>
@@ -228,17 +233,19 @@
 
 <script>
 function AppViewModel() {
-  // list of google map
+  // list of my google map locations
   this.myLocations = ko.observableArray(locations);
+  this.searchField = ko.observable("")
 
 }
 
 // Activates knockout.js
 ko.applyBindings(new AppViewModel());
+
 </script>
 
   <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=&v=3&callback=initMap">
+      src="https://maps.googleapis.com/maps/api/js?key=remove_for_github_&v=3&callback=initMap">
   </script>
 
   </body>
