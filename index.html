@@ -140,6 +140,16 @@
           });
           // Push the marker to our array of markers.
           markers.push(marker);
+
+          // show markers on map
+          var bounds = new google.maps.LatLngBounds();
+          // make map bigger for every new listing
+          for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+            bounds.extend(markers[i].position);
+          }
+          map.fitBounds(bounds);
+
           // Create an onclick event to open the large infowindow at each marker.
           marker.addListener('click', function() {
             populateInfoWindow(this, largeInfowindow);
@@ -152,8 +162,6 @@
             this.setIcon(defaultIcon);
           });
         }
-        document.getElementById('show-listings').addEventListener('click', showListings);
-        document.getElementById('hide-listings').addEventListener('click', hideListings);
       }
 
       // show info windo info
@@ -199,13 +207,7 @@
 
       // show all listings
       function showListings() {
-        var bounds = new google.maps.LatLngBounds();
-        // make map bigger for every new listing
-        for (var i = 0; i < markers.length; i++) {
-          markers[i].setMap(map);
-          bounds.extend(markers[i].position);
-        }
-        map.fitBounds(bounds);
+
       }
 
 
@@ -226,7 +228,7 @@
 
 <script>
 function AppViewModel() {
-  // list of google map locations
+  // list of google map
   this.myLocations = ko.observableArray(locations);
 
 }
@@ -236,7 +238,7 @@ ko.applyBindings(new AppViewModel());
 </script>
 
   <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=remove_for_github_&v=3&callback=initMap">
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7lQpueBc1WMAKwoa2Kxggse9C4G7hDX8&v=3&callback=initMap">
   </script>
 
   </body>
