@@ -12,16 +12,13 @@
       <div class="options-box">
         <h1>Find Your New NYC Home</h1>
         <div>
-          <input id="show-listings" type="button" value="Show Listings" data-bind="click: showListings">
-          <input id="hide-listings" type="button" value="Hide Listings">
 
-      <td><input data-bind='value: searchField, valueUpdate: "afterkeydown"' /></td>
-      <h1 data-bind="text: searchField"></h1>
+       <td><input class="form-control" data-bind="value: Query, valueUpdate: 'keyup'" autocomplete="off">
+</td>
 
-
-          <ul data-bind="foreach: myLocations">
-            <li data-bind="text: title"></li>
-          </ul>
+      <ul data-bind="foreach: searchResults">
+        <li data-bind="text: name"></li>
+      </ul>
 
         </div>
       </div>
@@ -236,6 +233,29 @@ function AppViewModel() {
   // list of my google map locations
   this.myLocations = ko.observableArray(locations);
   this.searchField = ko.observable("")
+
+var viewModel = {
+  locations: [ {name: "Park Ave Penthouse", location: {lat: 40.7713024, lng: -73.9632393}},
+           { name: "Chelsea Loft", location: {lat: 40.7444883, lng: -73.9949465}},
+           { name: "Union Square Open Floor Plan", location: {lat: 40.7347062, lng: -73.9895759}},
+           { name: "East Village Hip Studio", location: {lat: 40.7281777, lng: -73.984377}},
+           { name: "TriBeCa Artsy Bachelor Pad", location: {lat: 40.7195264, lng: -74.0089934}},
+           { name: "Chinatown Homey Space", location: {lat: 40.7180628, lng: -73.9961237}}
+         ]
+};
+
+viewModel.Query = ko.observable('');
+
+viewModel.searchResults = ko.computed(function() {
+    var q = viewModel.Query();
+    return viewModel.locations.filter(function(i) {
+      return i.name.toLowerCase().indexOf(q) >= 0;
+    });
+});
+
+ko.applyBindings(viewModel);
+
+
 
 }
 
