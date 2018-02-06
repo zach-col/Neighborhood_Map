@@ -155,6 +155,7 @@
           // Create an onclick event to open the large infowindow at each marker.
           marker.addListener('click', function() {
             populateInfoWindow(this, largeInfowindow);
+            toggleBounce(this);
           });
          // event listeners for mouseover and mouseout to change color of markers
           marker.addListener('mouseover', function() {
@@ -163,6 +164,7 @@
           marker.addListener('mouseout', function() {
             this.setIcon(defaultIcon);
           });
+
         }
       }
 
@@ -225,14 +227,27 @@
           return markerImage;
       }
 
+      function toggleBounce() {
+        if (marker.getAnimation() !== null) {
+          marker.setAnimation(null);
+        } else {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+          setTimeout(function() {
+            marker.setAnimation(null);
+          }, 1200)
+        }
+      }
+
+
+
 
     </script>
 
 <script>
-function AppViewModel() {
+
   // list of my google map locations
-  this.myLocations = ko.observableArray(locations);
-  this.searchField = ko.observable("")
+  // this.myLocations = ko.observableArray(locations);
+  // this.searchField = ko.observable("")
 
 var viewModel = {
   locations: [ {name: "Park Ave Penthouse", location: {lat: 40.7713024, lng: -73.9632393}},
@@ -256,16 +271,10 @@ viewModel.searchResults = ko.computed(function() {
 ko.applyBindings(viewModel);
 
 
-
-}
-
-// Activates knockout.js
-ko.applyBindings(new AppViewModel());
-
 </script>
 
   <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=remove_for_github_&v=3&callback=initMap">
+      src="https://maps.googleapis.com/maps/api/js?key=removed_to_commit_to_github_&v=3&callback=initMap">
   </script>
 
   </body>
