@@ -19,6 +19,10 @@
           <ul data-bind="foreach: visiblePlaces">
             <li data-bind="text: title, click: $parent.showInfo"></li>
           </ul>
+          <input onclick="clearMarkers();" type=button value="Hide Markers">
+          <input onclick="showMarkers();" type=button value="Show All Markers">
+
+
         </div>
       </div>
       <div id="map"></div>

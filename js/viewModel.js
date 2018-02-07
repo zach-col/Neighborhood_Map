@@ -72,22 +72,42 @@ function populateInfoWindow(marker, infowindow) {
   }
 }
 
+// Sets the map on all markers in the array.
+function setMapOnAll(map) {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
+}
+
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+  setMapOnAll(null);
+}
+
+// Shows any markers currently in the array.
+function showMarkers() {
+  setMapOnAll(map);
+}
+
 function ViewModel(){
   var self = this;
   this.filter = ko.observable();
 
   this.places = ko.observableArray(locations);
 
-
   this.visiblePlaces = ko.computed(function(){
        return this.places().filter(function(place){
            if(!self.filter() || place.title.toLowerCase().indexOf(self.filter().toLowerCase()) !== -1)
              return place;
        });
+
    },this);
 
-
-
+  // this.setMapOnAll = function (map) {
+  //       for (var i = 0; i < visiblePlaces.length; i++) {
+  //         visiblePlaces[i].setVisible(false);
+  //       }
+  //     }
 
 
   // shows marker info when clicked
@@ -97,7 +117,6 @@ function ViewModel(){
       // bounce google marker
       markers[context.$index()].setAnimation(4);
   };
-
 }
 
 ko.applyBindings(new ViewModel());
