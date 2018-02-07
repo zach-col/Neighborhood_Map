@@ -238,7 +238,13 @@
         }
       }
 
+      var location = function(data) {
+        var self = this;
 
+        this.name = data.name;
+        this.lat = data.lat;
+        this.lng = data.lng;
+      }
 
 
     </script>
@@ -267,7 +273,7 @@ ko.applyBindings(new ViewModel());
 </script>
 
   <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=removed_for_github_&v=3&callback=initMap">
+      src="https://maps.googleapis.com/maps/api/js?key=remove_for_github_8&v=3&callback=initMap">
   </script>
 
   </body>
