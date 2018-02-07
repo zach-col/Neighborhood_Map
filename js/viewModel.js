@@ -72,7 +72,6 @@ function populateInfoWindow(marker, infowindow) {
   }
 }
 
-
 function ViewModel(){
   var self = this;
   this.filter = ko.observable();
@@ -87,6 +86,11 @@ function ViewModel(){
        });
    },this);
 
+  // shows marker info when clicked
+  this.showInfo = function (data, event) {
+      var context = ko.contextFor(event.target);
+      google.maps.event.trigger(markers[context.$index()], 'click');
+  };
 
 }
 

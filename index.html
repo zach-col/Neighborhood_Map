@@ -17,9 +17,8 @@
           <input id="filter" type="text" data-bind="textInput: filter"/>
 
           <ul data-bind="foreach: visiblePlaces">
-            <li data-bind="text: title"></li>
+            <li data-bind="text: title, click: $parent.showInfo"></li>
           </ul>
-
         </div>
       </div>
       <div id="map"></div>
@@ -28,7 +27,7 @@
 
   <script type="text/javascript" src="js/viewModel.js"></script>
   <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=&v=3&callback=initMap">
+      src="https://maps.googleapis.com/maps/api/js?key=removed_for_github_&v=3&callback=initMap">
   </script>
 
   </body>
