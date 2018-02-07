@@ -86,10 +86,16 @@ function ViewModel(){
        });
    },this);
 
+
+
+
+
   // shows marker info when clicked
   this.showInfo = function (data, event) {
       var context = ko.contextFor(event.target);
       google.maps.event.trigger(markers[context.$index()], 'click');
+      // bounce google marker
+      markers[context.$index()].setAnimation(4);
   };
 
 }
