@@ -40,7 +40,8 @@ function initMap() {
       animation: google.maps.Animation.DROP,
       id: i
     });
-
+    // add to array
+    locations[i].marker = marker ;
     // Push the marker to our array of markers.
     markers.push(marker);
 
@@ -53,6 +54,9 @@ function initMap() {
 
   // Extend the boundaries of the map for each marker
   map.fitBounds(bounds);
+  // Apply bindings
+  ko.applyBindings(new ViewModel())
+
 }
 
 // This function populates the infowindow when the marker is clicked. We'll only allow
@@ -89,26 +93,39 @@ function showMarkers() {
   setMapOnAll(map);
 }
 
+  // Constructor takes locations aray data
+  var Constructor = function(data){
+    this.marker = data.marker;
+    this.title =  data.title;
+    this.location = data.location;
+  };
+
 function ViewModel(){
   var self = this;
-  this.filter = ko.observable();
 
-  this.places = ko.observableArray(locations);
+  self.filter = ko.observable('');
 
-  this.visiblePlaces = ko.computed(function(){
-       return this.places().filter(function(place){
-           if(!self.filter() || place.title.toLowerCase().indexOf(self.filter().toLowerCase()) !== -1)
-             return place;
-       });
+  self.places = ko.observableArray();
 
-   },this);
+  locations.forEach(function(location) {
+    self.places.push(new Constructor(location))
+  })
 
-  // this.setMapOnAll = function (map) {
-  //       for (var i = 0; i < visiblePlaces.length; i++) {
-  //         visiblePlaces[i].setVisible(false);
-  //       }
-  //     }
-
+  self.visiblePlaces = ko.computed(function() {
+    var filter = self.filter().toLowerCase();
+    if(!filter) {
+      ko.utils.arrayForEach(self.places(), function (item){
+        item.marker.setVisible(true);
+      });
+      return self.places();
+    } else {
+      return ko.utils.arrayFilter(self.places(), function(item) {
+        var result = (item.title.toLowerCase().search(filter) >=0)
+        item.marker.setVisible(result);
+        return result;
+      });
+    }
+  })
 
   // shows marker info when clicked
   this.showInfo = function (data, event) {

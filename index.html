@@ -11,18 +11,15 @@
     <div class="container">
       <div class="options-box">
         <h1>Find Your New NYC Home</h1>
-        <div>
-
-          <label for="filter">Filter:</label>
-          <input id="filter" type="text" data-bind="textInput: filter"/>
-
-          <ul data-bind="foreach: visiblePlaces">
-            <li data-bind="text: title, click: $parent.showInfo"></li>
-          </ul>
-          <input onclick="clearMarkers();" type=button value="Hide Markers">
-          <input onclick="showMarkers();" type=button value="Show All Markers">
-
-
+          <div>
+            <label for="filter">Filter:</label>
+            <input id="filter" type="text" data-bind="textInput: filter"/>
+            <ul data-bind="foreach: visiblePlaces">
+              <li data-bind="text: title, click: $parent.showInfo"></li>
+            </ul>
+            <input onclick="clearMarkers();" type=button value="Hide Markers">
+            <input onclick="showMarkers();" type=button value="Show All Markers">
+          </div>
         </div>
       </div>
       <div id="map"></div>
@@ -31,7 +28,7 @@
 
   <script type="text/javascript" src="js/viewModel.js"></script>
   <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=removed_&v=3&callback=initMap">
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7lQpueBc1WMAKwoa2Kxggse9C4G7hDX8&v=3&callback=initMap">
   </script>
 
   </body>
