@@ -10,4 +10,8 @@ To get started.
 
 3 open index.html and add your own Google API key at the bottom of page
 
-4 open index.html file in your browser
+4 now got to js/viewModel.js and add your own foursquare api key and client id
+
+5 open index.html file in your browser
+
+6 good to go
