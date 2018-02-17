@@ -15,16 +15,9 @@ input {
     font-size: 12px;
 }
 
-h1 {
-    color: #525454;
-    font-size: 22px;
-    margin: 0 0 10px 0;
-    text-align: center;
-}
-
-#hide-listings,
-#show-listings {
-    width: 48%;
+#header {
+    display: inline-block;
+    color: black;
 }
 
 hr {
@@ -34,23 +27,21 @@ hr {
     border: none;
 }
 
+/* label for search filter */
+#searchFilter {
+    color: white;
+}
+
+/* search function container */
+#searchFunction {
+    padding: 20px;
+}
+
+/* google map */
 #map {
     bottom:0px;
     height: 100%;
-    left: 362px;
-    position: absolute;
-    right: 0px;
-}
-
-.options-box {
-    background: #fff;
-    border: 1px solid #999;
-    border-radius: 3px;
-    height: 100%;
-    line-height: 35px;
-    padding: 10px 10px 30px 10px;
-    text-align: left;
-    width: 340px;
+    left: 0px;
 }
 
 #pano {
@@ -62,19 +53,17 @@ hr {
     font-size: 12px;
 }
 
-/*
+/* fix navbar to top of page */
+.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 40;
+    background-color: white;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
+/* google maps data info*/
+.data{
+    color: white;
+    padding-bottom: 10px;
+}
