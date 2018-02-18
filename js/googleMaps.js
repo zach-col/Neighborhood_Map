@@ -51,17 +51,17 @@ function initMap() {
     // Push the marker to our array of markers.
     markers.push(marker);
 
-    // Create an onclick event to open an infowindow at each marker.
-    marker.addListener('click', function() {
-      populateInfoWindow(this, largeInfowindow);
-    });
     bounds.extend(markers[i].position);
   }
+  // Create an onclick event to open an infowindow at each marker.
+  marker.addListener('click', function() {
+    populateInfoWindow(this, largeInfowindow);
+  });
 
   // Extend the boundaries of the map for each marker
   map.fitBounds(bounds);
   // Apply bindings
-  ko.applyBindings(new ViewModel())
+  ko.applyBindings(new ViewModel());
 
 }
 
@@ -74,7 +74,7 @@ function populateInfoWindow(marker, infowindow) {
     infowindow.marker = marker;
     infowindow.setContent('');
 
-    var googleMapContent = '<h1>' + marker.title + '</h1>'
+    var googleMapContent = '<h1>' + marker.title + '</h1>';
 
     self.fourSquareRequest = "https://api.foursquare.com/v2/venues/search?ll=" +
       marker.lat +
@@ -82,17 +82,16 @@ function populateInfoWindow(marker, infowindow) {
       marker.lng +
       "&query=" +
       marker.title +
-      "&v=20150214&m=foursquare&client_secret=CLIENT_SECRET_GOES_HERE&client_id=CLIENT_ID_GOES_HERE"
+      "&v=20150214&m=foursquare&client_secret=removed_&client_id=removed_"
 
       // json
       $.getJSON(fourSquareRequest).done(function(marker){
         var response = marker.response.venues[0];
         street = response.location.formattedAddress[0];
 
-        apiContent = '<p><span style="color:green">' + "Street: "+  self.street +'</span></p>'
+        apiContent = '<p><span style="color:green">' + "Street: "+  self.street +'</span></p>';
 
         infowindow.setContent( googleMapContent + apiContent);
-        console.log("made ajax call")
       })
 
     infowindow.open(map, marker);
