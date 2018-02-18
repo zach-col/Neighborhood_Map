@@ -14,16 +14,29 @@ function ViewModel(){
     if(!filter) {
       ko.utils.arrayForEach(self.places(), function (item){
         item.marker.setVisible(true);
+        item.marker.addListener('click', function(){
+          populateInfoWindow(this, largeInfowindow);
+        });
       });
       return self.places();
     } else {
       return ko.utils.arrayFilter(self.places(), function(item) {
         var result = (item.title.toLowerCase().search(filter) >=0)
         item.marker.setVisible(result);
+        item.marker.addListener('click', function(){
+          populateInfoWindow(this, largeInfowindow);
+        })
         return result;
       });
     }
   })
+
+
+// Create an onclick event to open an infowindow at each marker.
+    // marker.addListener('click', function() {
+    //   populateInfoWindow(this, largeInfowindow);
+    // });
+
 
   // shows marker info when clicked
   this.showInfo = function (data, event) {

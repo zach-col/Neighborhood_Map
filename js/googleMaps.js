@@ -20,9 +20,8 @@ function initMap() {
     zoom: 13
   });
 
-  var largeInfowindow = new google.maps.InfoWindow();
+  largeInfowindow = new google.maps.InfoWindow();
   var bounds = new google.maps.LatLngBounds();
-
   // The following group uses the location array to create an array of markers on initialize.
   for (var i = 0; i < locations.length; i++) {
 
@@ -53,10 +52,6 @@ function initMap() {
 
     bounds.extend(markers[i].position);
   }
-  // Create an onclick event to open an infowindow at each marker.
-  marker.addListener('click', function() {
-    populateInfoWindow(this, largeInfowindow);
-  });
 
   // Extend the boundaries of the map for each marker
   map.fitBounds(bounds);
@@ -82,7 +77,7 @@ function populateInfoWindow(marker, infowindow) {
       marker.lng +
       "&query=" +
       marker.title +
-      "&v=20150214&m=foursquare&client_secret=removed_&client_id=removed_"
+      "&v=20150214&m=foursquare&client_secret=removed_&client_id=removed_";
 
       // json
       $.getJSON(fourSquareRequest).done(function(marker){
@@ -92,7 +87,7 @@ function populateInfoWindow(marker, infowindow) {
         apiContent = '<p><span style="color:green">' + "Street: "+  self.street +'</span></p>';
 
         infowindow.setContent( googleMapContent + apiContent);
-      })
+      });
 
     infowindow.open(map, marker);
     // Make sure the marker property is cleared if the infowindow is closed.
@@ -109,19 +104,9 @@ function setMapOnAll(map) {
   }
 }
 
-// Removes the markers from the map, but keeps them in the array.
-function clearMarkers() {
-  setMapOnAll(null);
-}
-
-// Shows any markers currently in the array.
-function showMarkers() {
-  setMapOnAll(map);
-}
-
-  // Constructor takes locations aray data
-  var Constructor = function(data){
-    this.marker = data.marker;
-    this.title =  data.title;
-    this.location = data.location;
-  };
+// Constructor takes locations aray data
+var Constructor = function(data){
+  this.marker = data.marker;
+  this.title =  data.title;
+  this.location = data.location;
+};
