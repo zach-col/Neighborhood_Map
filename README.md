@@ -15,3 +15,8 @@ To get started.
 5 open index.html file in your browser
 
 6 good to go
+
+Sources that helped.
+
+http://knockoutjs.com/index.html https://stackoverflow.com/questions/41503744/uncaught-typeerror-cannot-read-property-setvisible-of-undefined-filtering-u https://stackoverflow.com/questions/45422066/set-marker-visible-with-knockout-js-ko-utils-arrayfilter http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html https://stackoverflow.com/questions/31143822/update-view-when-a-filter-on-observable-array-changes?rq=1 https://developers.google.com/maps/documentation/javascript/markers
+
