@@ -77,7 +77,7 @@ function populateInfoWindow(marker, infowindow) {
       marker.lng +
       "&query=" +
       marker.title +
-      "&v=20150214&m=foursquare&client_secret=removed_&client_id=removed_";
+      "&v=20150214&m=foursquare&client_secret=INSERT_FOURSQUARE_API_CLIENT_SECRET_HERE&client_id=INSERT_FOURSQUARE_API_CLIEND_ID_HERE";
 
       // json
       $.getJSON(fourSquareRequest).done(function(marker){
