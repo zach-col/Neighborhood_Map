@@ -8,9 +8,9 @@ To get started.
 
 2 change directory's to this repo
 
-3 open index.html and add your own Google API key at the bottom of page
+3 open index.html and add your own Google API key on line 48 where it says INSERT_GOOGLE_API_KEY_HERE
 
-4 now got to js/viewModel.js and add your own foursquare api key and client id
+4 now got to js/viewModel.js and add your own FourSquare API key and client id on line 80 where it says INSERT_FOURSQUARE_API_CLIENT_SECRET_HERE AND INSERT_FOURSQUARE_API_CLIENT_ID_HERE
 
 5 open index.html file in your browser
 
