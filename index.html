@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
+  </head>
+  <body>
+    <!-- Knockout.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+
+<!-- navbar content -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div id="searchFunction">
+    <label id="searchFilter" for="filter">Search:</label>
+    <input id="filter" type="text" data-bind="textInput: filter" placeholder="Enter Location" />
+    <ul data-bind="foreach: visiblePlaces">
+      <li class="data" data-bind="text: title, click: $parent.showInfo"></li>
+    </ul>
+    <!-- google and foursquare api refrence -->
+    <p id="apiRefrence">Made with Google API and Foursquare API</p>
+    <!-- adding space to bottom of page -->
+    <div class="space">
+    </div>
+  </div>
+</div>
+
+<!-- navbar button and header -->
+<div class="fixed">
+  <div id="main">
+    <!-- nav button -->
+    <span style="font-size:30px;cursor:pointer;display:inline-block;" onclick="openNav()">&#9776;</span>
+    <!-- header -->
+    <p id="header">Places to visit in NYC</p>
+  </div>
+</div>
+<div id="map"></div>
+
+  <!-- jquery cdn -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- google maps data and functions -->
+  <script src="js/googleMaps.js"></script>
+  <!-- knockout.js viewModel -->
+  <script type="text/javascript" src="js/viewModel.js"></script>
+  <!-- google map api -->
+  <script
+      src="https://maps.googleapis.com/maps/api/js?key=INSERT_GOOGLE_API_KEY_HERE&v=3&callback=initMap" async defer onerror="mapError()">
+  </script>
+
+  <script>
+  document.getElementById("mySidenav").style.width = "0";
+  function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+  }
+
+  function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+  }
+  </script>
+  </body>
+</html>
