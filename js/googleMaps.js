@@ -1,6 +1,7 @@
-var map;
-// Create a new blank array for all the listing markers.
-var markers = [];
+  var map;
+
+  // Create a new blank array for all the listing markers.
+  var markers = [];
 
 // These are the real estate listings that will be shown to the user.
 // Normally we'd have these in a database instead.
@@ -14,6 +15,7 @@ var locations = [
 ];
 
 function initMap() {
+
   // Constructor creates a new map - only center and zoom are required.
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 40.7413549, lng: -73.9980244},
@@ -78,7 +80,6 @@ function populateInfoWindow(marker, infowindow) {
       "&query=" +
       marker.title +
  "&v=20150214&m=foursquare&client_secret=INSERT_FOURSQUARE_API_CLIENT_SECRET_HERE&client_id=INSERT_FOURSQUARE_API_CLIENT_ID_HERE";
-
       // json
       $.getJSON(fourSquareRequest).done(function(marker){
         var response = marker.response.venues[0];

@@ -10,17 +10,7 @@ function ViewModel(){
   })
 
   self.visiblePlaces = ko.computed(function() {
-    var filter = self.filter().toLowerCase();
-    if(!filter) {
-      ko.utils.arrayForEach(self.places(), function (item){
-        var result = (item.title.toLowerCase().search(filter) >=0);
-        item.marker.setVisible(result);
-        item.marker.addListener('click', function(){
-          populateInfoWindow(this, largeInfowindow);
-          item.marker.setAnimation(4);
-        });
-      });  return self.places();
-    } else {
+    var filter = self.filter().toLowerCase();{
       return ko.utils.arrayFilter(self.places(), function(item) {
         var result = (item.title.toLowerCase().search(filter) >=0);
         item.marker.setVisible(result);
@@ -32,12 +22,6 @@ function ViewModel(){
       });
     }
   })
-
-// Create an onclick event to open an infowindow at each marker.
-    // marker.addListener('click', function() {
-    //   populateInfoWindow(this, largeInfowindow);
-    // });
-
 
   // shows marker info when clicked
   this.showInfo = function (data) {
