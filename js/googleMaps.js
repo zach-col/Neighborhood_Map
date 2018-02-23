@@ -23,7 +23,7 @@ function initMap() {
   });
 
   largeInfowindow = new google.maps.InfoWindow();
-  var bounds = new google.maps.LatLngBounds();
+  bounds = new google.maps.LatLngBounds();
   // The following group uses the location array to create an array of markers on initialize.
   for (var i = 0; i < locations.length; i++) {
 
@@ -80,6 +80,7 @@ function populateInfoWindow(marker, infowindow) {
       "&query=" +
       marker.title +
  "&v=20150214&m=foursquare&client_secret=INSERT_FOURSQUARE_API_CLIENT_SECRET_HERE&client_id=INSERT_FOURSQUARE_API_CLIENT_ID_HERE";
+
       // json
       $.getJSON(fourSquareRequest).done(function(marker){
         var response = marker.response.venues[0];
