@@ -109,7 +109,7 @@ function setMapOnAll(map) {
 
 // google map error if it does not load properly
 mapError = () => {
-  alert("Google Maps API is having trouble..... what if it did not have trouble? You might call me a dreamer but Im not the only one......")
+  alert("Google Maps API is having trouble..... what if it did not have trouble? You might call me a dreamer but Im not the only one......");
 };
 
 // Constructor takes locations aray data
