@@ -24,4 +24,10 @@ function ViewModel(){
       });
     }
   })
+  // shows marker info when clicked
+  this.showInfo = function (data) {
+      populateInfoWindow(data.marker, largeInfowindow);
+      data.marker.setAnimation(4);
+  };
+
 }
